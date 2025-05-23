@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Delivery } from "@/components/svgs/delivery";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Topbar from "@/components/TopBar";
 
 interface BouncingNameProps {
   name?: string;
@@ -14,7 +15,7 @@ interface BouncingNameProps {
   showDelivery?: boolean;
 }
 
-export default function BouncingName({
+export default function DashBoard({
   name,
   color = "text-purple-500",
   fontSize = "text-4xl md:text-5xl",
@@ -43,6 +44,7 @@ export default function BouncingName({
 
   return (
     <div className="flex flex-col items-center justify-center py-10 space-y-6">
+     <Topbar/>
       <div className={`flex flex-wrap ${fontSize} font-extrabold tracking-wide`}>
         {letters.map((letter, index) => (
           <motion.div

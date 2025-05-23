@@ -9,6 +9,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { dummyData } from "@/lib/dummy"
+import Topbar from "@/components/TopBar"
 
 export const getStatusBadgeColor = (status: string) => {
   switch (status) {
@@ -64,6 +65,7 @@ export default function OrderManagement() {
 
   return (
         <Card className="flex min-h-screen flex-col bg-gradient-to-b from-amber-50 to-white">
+         <Topbar/>
           <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-gradient-to-r from-red-50 to-amber-50 rounded-t-lg">
             <div>
               <CardTitle className="text-red-700 text-2xl flex items-center">
