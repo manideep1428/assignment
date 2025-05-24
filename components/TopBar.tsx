@@ -74,19 +74,22 @@ export default function Topbar() {
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-6">
-        <motion.div variants={logoVariants} className="flex items-center space-x-3">
-            <span className="text-sm font-bold text-white">
-              <Image src={"/logo.ico"} width={30} height={30} alt="M"/>
-            </span>
+      <motion.div variants={logoVariants} className="flex items-center space-x-3">
+          <motion.div
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-purple-600"
+          >
+            <span className="text-sm font-bold text-white">M</span>
+          </motion.div>
           <motion.h1
             className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            Assign
+            Assignment
           </motion.h1>
         </motion.div>
-
         <motion.nav variants={itemVariants} className="flex items-center space-x-2">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
             <Button onClick={()=>router.push("/orders")} variant="ghost" size="sm" className="relative overflow-hidden group">
