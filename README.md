@@ -1,35 +1,16 @@
-# Modern Next.js Dashboard Application
+## Hi I'm Manideep , I have coding for 1.2 year with React and NEXTJS
 
-A modern, responsive dashboard application built with Next.js, TypeScript, and Tailwind CSS. This project features authentication, a clean UI, and a responsive design.
+# I'm Currently wokring on MCP integrated social media Agent, I really join your Startup 
 
-## 🚀 Features
 
-- 🔒 Authentication system with sign-in functionality
-- 📊 Dashboard with clean, modern UI
-- 🎨 Dark/Light mode support
-- 🛠 Built with Next.js 13+ App Router
-- 🎯 TypeScript for type safety
-- 🎨 Styled with Tailwind CSS
-- 📱 Fully responsive design
-- ⚡ Optimized performance with Next.js
 
-## 🛠 Tech Stack
-
-- **Framework**: [Next.js 13+](https://nextjs.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [Radix UI](https://www.radix-ui.com/)
-- **Icons**: [Lucide Icons](https://lucide.dev/)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Form Handling**: React Hook Form
-- **Animation**: Framer Motion
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
+- Bun (preferred)
 - Node.js 18.0.0 or later
-- npm or yarn or pnpm
+- bun or npm or yarn or pnpm
 
 ### Installation
 
@@ -56,30 +37,18 @@ A modern, responsive dashboard application built with Next.js, TypeScript, and T
 
 4. Run the development server:
    ```bash
+   bun dev  (if you have bun installed )
+   # or
    npm run dev
    # or
    yarn dev
    # or
    pnpm dev
+
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📂 Project Structure
-
-```
-/
-├── app/                    # App router
-│   ├── api/                # API routes
-│   ├── dashboard/          # Dashboard pages
-│   ├── sign-in/            # Authentication pages
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Home page
-├── components/             # Reusable components
-├── lib/                    # Utility functions
-├── public/                 # Static files
-└── styles/                 # Global styles
-```
 
 ## 🔧 Available Scripts
 
