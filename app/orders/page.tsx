@@ -95,30 +95,23 @@ export default function Orders() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="container mx-auto px-6 py-8 max-w-7xl"
+        className="container mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 max-w-7xl"
       >
         <motion.div variants={itemVariants} className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
-                <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
-                  <Pizza className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2 sm:gap-3">
+                <div className="p-1.5 sm:p-2 bg-orange-100 dark:bg-orange-900/30 rounded-xl">
+                  <Pizza className="h-6 w-6 sm:h-8 sm:w-8 text-orange-600 dark:text-orange-400" />
                 </div>
                 Order Management
               </h1>
-              <p className="text-lg dark:text-gray-400 mt-2">Track and manage your pizza orders in real-time</p>
+              <p className="text-base sm:text-lg dark:text-gray-400 mt-1 sm:mt-2">Track and manage your pizza orders in real-time</p>
             </div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-700 dark:hover:bg-orange-600 text-white shadow-lg">
-                <PlusCircle className="mr-2 h-4 w-4" />
-                New Order
-              </Button>
-            </motion.div>
           </div>
         </motion.div>
 
-        {/* Stats Cards */}
-        <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
           {[
             { label: "Total Orders", value: orders.length, color: "blue" },
             { label: "Pending", value: orders.filter((o) => o.status === "Pending").length, color: "amber" },
@@ -136,11 +129,11 @@ export default function Orders() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{stat.label}</p>
-                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400">{stat.label}</p>
+                      <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
                     </div>
-                    <div className={`p-3 rounded-full bg-${stat.color}-100 dark:bg-${stat.color}-900/30`}>
-                      <div className={`w-6 h-6 bg-${stat.color}-600 dark:bg-${stat.color}-400 rounded`} />
+                    <div className={`p-2 sm:p-3 rounded-full bg-${stat.color}-100 dark:bg-${stat.color}-900/30`}>
+                      <div className={`w-5 h-5 sm:w-6 sm:h-6 bg-${stat.color}-600 dark:bg-${stat.color}-400 rounded`} />
                     </div>
                   </div>
                 </CardContent>
@@ -151,16 +144,16 @@ export default function Orders() {
 
         {/* Main Content Card */}
         <motion.div variants={itemVariants}>
-          <Card className="border-0 shadow-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border dark:border-gray-700">
+          <Card className="border-0 shadow-sm sm:shadow-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border dark:border-gray-700 mx-[-0.75rem] sm:mx-0 rounded-none sm:rounded-lg">
             <CardHeader className="border-b border-gray-100 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <CardTitle className="text-xl text-gray-900 dark:text-white">Orders Overview</CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-400">Manage and track all your pizza orders</CardDescription>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+                <div className="hidden sm:block">
+                  <CardTitle className="text-lg sm:text-xl text-gray-900 dark:text-white">Orders Overview</CardTitle>
+                  <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-400">Manage and track all your pizza orders</CardDescription>
                 </div>
 
                 {/* Search and Filter Controls */}
-                <div className="flex flex-col sm:flex-row gap-3 min-w-0 sm:min-w-[400px]">
+                <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-3">
                   <div className="relative flex-1">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <Input
@@ -171,9 +164,9 @@ export default function Orders() {
                     />
                   </div>
                   <Select value={statusFilter} onValueChange={setStatusFilter}>
-                    <SelectTrigger className="w-full sm:w-[160px] border-gray-200 dark:border-gray-700 focus:border-orange-300 dark:focus:border-orange-500 focus:ring-orange-200 dark:focus:ring-orange-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
-                      <Filter className="mr-2 h-4 w-4 text-gray-400" />
-                      <SelectValue placeholder="Status" />
+                    <SelectTrigger className="w-full sm:w-[140px] border-gray-200 dark:border-gray-700 focus:border-orange-300 dark:focus:border-orange-500 focus:ring-orange-200 dark:focus:ring-orange-800 bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+                      <Filter className="mr-2 h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-400" />
+                      <SelectValue placeholder="Status" className="text-sm sm:text-base" />
                     </SelectTrigger>
                     <SelectContent className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
                       {statuses.map((status) => (
@@ -188,16 +181,16 @@ export default function Orders() {
             </CardHeader>
 
             <CardContent className="p-0">
-              <div className="overflow-hidden">
+              <div className="overflow-x-auto">
                 <Table>
                   <TableHeader className="bg-gray-50/80 dark:bg-gray-800/80">
                     <TableRow className="border-gray-100 dark:border-gray-700">
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Order ID</TableHead>
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Customer</TableHead>
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Pizza Type</TableHead>
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Quantity</TableHead>
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Order Date</TableHead>
-                      <TableHead className="text-gray-700 dark:text-gray-300 font-semibold">Status</TableHead>
+                      <TableHead className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Order ID</TableHead>
+                      <TableHead className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Customer</TableHead>
+                      <TableHead className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Pizza Type</TableHead>
+                      <TableHead className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Qty</TableHead>
+                      <TableHead className="hidden xs:table-cell text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Order Date</TableHead>
+                      <TableHead className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-semibold whitespace-nowrap">Status</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -220,24 +213,26 @@ export default function Orders() {
                           transition={{ delay: index * 0.05 }}
                           className="border-gray-100 dark:border-gray-800 hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors"
                         >
-                          <TableCell className="font-mono text-sm font-medium text-gray-900 dark:text-gray-200">{order.orderId}</TableCell>
-                          <TableCell className="font-medium text-gray-900 dark:text-gray-200">{order.customerName}</TableCell>
+                          <TableCell className="font-mono text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap">{order.orderId}</TableCell>
+                          <TableCell className="text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-200 whitespace-nowrap">{order.customerName}</TableCell>
                           <TableCell>
-                            <div className="flex items-center gap-2">
-                              <Pizza className="h-4 w-4 text-orange-500 dark:text-orange-400" />
-                              <span className="text-gray-900 dark:text-gray-200">{order.pizzaType}</span>
+                            <div className="flex items-center gap-1.5">
+                              <Pizza className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-orange-500 dark:text-orange-400 flex-shrink-0" />
+                              <span className="text-xs sm:text-sm text-gray-900 dark:text-gray-200 truncate max-w-[100px] sm:max-w-none">
+                                {order.pizzaType}
+                              </span>
                             </div>
                           </TableCell>
                           <TableCell className="text-gray-900 dark:text-gray-200">
-                            <span className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-full text-sm font-medium">
+                            <span className="inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 bg-gray-100 dark:bg-gray-700 rounded-full text-xs sm:text-sm font-medium">
                               {order.quantity}
                             </span>
                           </TableCell>
-                          <TableCell className="text-gray-600 dark:text-gray-400 text-sm">
+                          <TableCell className="hidden xs:table-cell text-xs sm:text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap">
                             {new Date(order.orderDate).toLocaleDateString("en-US", {
                               month: "short",
                               day: "numeric",
-                              year: "numeric",
+                              year: "2-digit",
                               hour: "2-digit",
                               minute: "2-digit",
                             })}
@@ -245,11 +240,11 @@ export default function Orders() {
                           <TableCell>
                             <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
                               <Badge
-                                className={`flex items-center w-fit font-medium ${getStatusBadgeColor(order.status)}`}
+                                className={`flex items-center w-fit font-medium text-xs sm:text-sm ${getStatusBadgeColor(order.status)}`}
                                 variant="outline"
                               >
                                 {getStatusIcon(order.status)}
-                                {order.status}
+                                <span className="truncate">{order.status}</span>
                               </Badge>
                             </motion.div>
                           </TableCell>
