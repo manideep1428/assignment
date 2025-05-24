@@ -12,7 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { dummyData } from "@/lib/dummy"
 import Topbar from "@/components/TopBar"
 
-export const getStatusBadgeColor = (status: string) => {
+const getStatusBadgeColor = (status: string) => {
   switch (status) {
     case "Pending":
       return "bg-amber-50 text-amber-700 border-amber-200 hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800 dark:hover:bg-amber-900/50"
@@ -69,7 +69,7 @@ const itemVariants = {
   },
 }
 
-export default function OrderManagement() {
+export default function Orders() {
   const [orders, setOrders] = useState(dummyData)
   const [searchTerm, setSearchTerm] = useState("")
   const [statusFilter, setStatusFilter] = useState("all")
@@ -97,7 +97,6 @@ export default function OrderManagement() {
         animate="visible"
         className="container mx-auto px-6 py-8 max-w-7xl"
       >
-        {/* Header Section */}
         <motion.div variants={itemVariants} className="mb-8">
           <div className="flex items-center justify-between">
             <div>
