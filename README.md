@@ -49,30 +49,3 @@
 
 5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
-## 🔧 Available Scripts
-
-- `npm run dev` - Start the development server
-- `npm run build` - Build the application for production
-- `npm start` - Start the production server
-- `npm run lint` - Run ESLint
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
-## 📬 Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - your.email@example.com
-
-Project Link: [https://github.com/yourusername/assign](https://github.com/yourusername/assign)
-
----
-
-<p align="center">
-  Made with ❤️ using Next.js and TypeScript
-</p>
