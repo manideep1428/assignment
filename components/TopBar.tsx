@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { signOut, useSession } from "next-auth/react"
-import { Github, Settings, User, LogOut, LayoutDashboard, Bell, Sun, Moon, Hand, Box, BoxIcon, Menu, X } from "lucide-react"
+import { Github, Settings, User, LogOut, LayoutDashboard, Bell, Sun, Moon, Hand, Box, BoxIcon } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { ModeToggle } from "./DarkToggle"
@@ -59,24 +59,11 @@ const logoVariants = {
 export default function Topbar() {
   const { data: session } = useSession()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const router = useRouter();
+  const router =  useRouter();
 
   const handleClick = () => {
     alert("Under Construction")
   }
-
-  // Close mobile menu when route changes
-  useEffect(() => {
-    const handleRouteChange = () => {
-      setIsMobileMenuOpen(false)
-    }
-    
-    window.addEventListener('routeChangeComplete', handleRouteChange)
-    return () => {
-      window.removeEventListener('routeChangeComplete', handleRouteChange)
-    }
-  }, [])
 
   return (
     <motion.header
@@ -85,7 +72,7 @@ export default function Topbar() {
       animate="visible"
       className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
     >
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4 sm:px-6">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-6">
         <motion.div variants={logoVariants} className="flex items-center space-x-3">
           <motion.div
             whileHover={{ rotate: 360 }}
@@ -103,15 +90,9 @@ export default function Topbar() {
           </motion.h1>
         </motion.div>
 
-        {/* Desktop Navigation */}
-        <motion.nav variants={itemVariants} className="hidden md:flex items-center space-x-1">
+        <motion.nav variants={itemVariants} className="flex items-center space-x-2">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
-            <Button 
-              onClick={() => router.push("/orders")} 
-              variant="ghost" 
-              size="sm" 
-              className="relative overflow-hidden group px-3 py-5"
-            >
+            <Button onClick={()=>router.push("/orders")} variant="ghost" size="sm" className="relative overflow-hidden group">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100"
                 initial={false}
@@ -119,114 +100,37 @@ export default function Topbar() {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <BoxIcon className="h-4 w-4 sm:mr-2" />
-              <span className="hidden sm:inline relative z-10">Orders</span>
+              <BoxIcon className="mr-2 h-4 w-4" />
+              <span className="relative z-10">Orders</span>
             </Button>
           </motion.div>
 
+          {/* Notifications */}
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
-            <Button variant="ghost" size="sm" className="p-2 sm:px-3 sm:py-5">
+            <Button variant="ghost" size="sm" className="relative">
               <Bell className="h-4 w-4" />
               <motion.span
-                className="absolute top-2 right-2 sm:top-1 sm:right-1 h-2 w-2 bg-red-500 rounded-full"
+                className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
               />
             </Button>
           </motion.div>
-          
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
-            <ModeToggle />
+            <ModeToggle/>
           </motion.div>
-          
           <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
             <Link href="https://github.com/manideep1428">
-              <Button variant="ghost" size="sm" className="p-2 sm:px-3 sm:py-5">
+              <Button variant="ghost" size="sm">
                 <Github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
               </Button>
             </Link>
           </motion.div>
-        </motion.nav>
 
-        {/* Mobile menu button */}
-        <motion.div 
-          className="md:hidden flex items-center"
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-gray-700 dark:text-gray-300"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
-          </Button>
-        </motion.div>
-
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div 
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.2 }}
-                className="md:hidden absolute top-16 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/40 z-40 p-4 space-y-2"
-              >
-                <Button 
-                  variant="ghost" 
-                  className="w-full justify-start"
-                  onClick={() => {
-                    router.push('/orders')
-                    setIsMobileMenuOpen(false)
-                  }}
-                >
-                  <BoxIcon className="mr-2 h-4 w-4" />
-                  Orders
-                </Button>
-                <Button variant="ghost" className="w-full justify-start">
-                  <Bell className="mr-2 h-4 w-4" />
-                  Notifications
-                </Button>
-                <div className="flex items-center justify-between p-2">
-                  <span className="text-sm font-medium">Theme</span>
-                  <ModeToggle />
-                </div>
-                <a 
-                  href="https://github.com/manideep1428" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Button variant="ghost" className="w-full justify-start">
-                    <Github className="mr-2 h-4 w-4" />
-                    GitHub
-                  </Button>
-                </a>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <motion.div 
-            variants={itemVariants} 
-            whileHover={{ scale: 1.05 }} 
-            transition={{ duration: 0.2 }}
-            className="ml-2"
-          >
+          <motion.div variants={itemVariants} whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
             <DropdownMenu onOpenChange={setIsDropdownOpen}>
               <DropdownMenuTrigger asChild>
-                <motion.div 
-                  className="relative cursor-pointer" 
-                  whileHover={{ scale: 1.1 }} 
-                  whileTap={{ scale: 0.95 }}
-                >
+                <motion.div className="relative cursor-pointer" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                   <Avatar className="h-8 w-8 ring-2 ring-transparent transition-all duration-200 hover:ring-blue-500/50">
                     <AvatarImage src={session?.user?.image || ""} alt="User" />
                     <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white text-sm font-medium">
@@ -243,7 +147,7 @@ export default function Topbar() {
 
               <AnimatePresence>
                 {isDropdownOpen && (
-                  <DropdownMenuContent asChild align="end" className="w-56 md:w-64">
+                  <DropdownMenuContent asChild align="end" className="w-56">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95, y: -10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
