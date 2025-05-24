@@ -8,6 +8,7 @@ const authOptions:NextAuthOptions = {
     })],
     pages:{
         signIn:"/sign-in",
+        error:"/auth/err"
     }
 }
 

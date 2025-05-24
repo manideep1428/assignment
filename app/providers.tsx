@@ -1,8 +1,6 @@
 
 "use client"
-import { AppSidebar } from "@/components/AppSidebar"
 import { ThemeProvider } from "@/components/theme"
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { SessionProvider } from "next-auth/react"
 
 export default function Providers({ children }: { children: React.ReactNode }) {
@@ -17,6 +15,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         >
           {children}
         </ThemeProvider>
-    </SessionProvider>
+      </SessionProvider>
   )
 }
