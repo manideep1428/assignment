@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Delivery } from "@/components/svgs/delivery";
 import { useSession } from "next-auth/react";
