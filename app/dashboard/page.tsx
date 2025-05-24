@@ -1,17 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Delivery } from "@/components/svgs/delivery";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Topbar from "@/components/TopBar";
-import { NameProps } from "@/lib/types";
 
 
-export default function DashboardPage({
- 
-}: NameProps) {
+export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -21,7 +18,7 @@ export default function DashboardPage({
     }
   }, [status, router]);
 
-  const userName = name ?? session?.user?.name ?? "";
+  const userName = session?.user?.name ?? "";
   const letters = userName.split("");
 
   if (status === "loading") return null;
