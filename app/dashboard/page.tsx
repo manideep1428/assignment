@@ -6,14 +6,8 @@ import { Delivery } from "@/components/svgs/delivery";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Topbar from "@/components/TopBar";
+import { NameProps } from "@/lib/types";
 
-interface BouncingNameProps {
-  name?: string;
-  color?: string;
-  fontSize?: string;
-  delay?: number;
-  showDelivery?: boolean;
-}
 
 export default function DashBoard({
   name,
@@ -21,17 +15,13 @@ export default function DashBoard({
   fontSize = "text-4xl md:text-5xl",
   delay = 0.05,
   showDelivery = true,
-}: BouncingNameProps) {
-  const [isVisible, setIsVisible] = useState(false);
+}: NameProps) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/sign-in");
-    }
-    if (status === "authenticated") {
-      setIsVisible(true);
     }
   }, [status, router]);
 
@@ -52,9 +42,7 @@ export default function DashBoard({
             className={`inline-block ${color}`}
             initial={{ y: -50, opacity: 0, scale: 0.5 }}
             animate={
-              isVisible
-                ? { y: 0, opacity: 1, scale: 1 }
-                : { y: -50, opacity: 0, scale: 0.5 }
+              { y: 0, opacity: 1, scale: 1 }
             }
             transition={{
               type: "spring",
@@ -78,7 +66,6 @@ export default function DashBoard({
         </motion.div>
       )}
 
-      {/* Go to Orders Button */}
       <motion.button
         onClick={goToOrders}
         className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-md text-sm font-medium hover:bg-purple-700 transition-colors"
