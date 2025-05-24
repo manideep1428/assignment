@@ -29,7 +29,7 @@ const getStatusBadgeColor = (status: string) => {
   }
 }
 
-export const getStatusIcon = (status: string) => {
+const getStatusIcon = (status: string) => {
   switch (status) {
     case "Pending":
       return <Clock className="mr-1.5 h-3.5 w-3.5" />
