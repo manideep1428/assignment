@@ -116,7 +116,7 @@ export default function Topbar() {
             <ModeToggle/>
           </motion.div>
           <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
-            <Link href="https://github.com/manideep1428">
+            <Link href="https://github.com/manideep1428/assignment" target="_blank">
               <Button variant="ghost" size="sm">
                 <Github className="h-4 w-4" />
               </Button>
