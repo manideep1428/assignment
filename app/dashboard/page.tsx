@@ -9,7 +9,7 @@ import Topbar from "@/components/TopBar";
 import { NameProps } from "@/lib/types";
 
 
-export default function DashBoard({
+export default function DashboardPage({
  
 }: NameProps) {
   const { data: session, status } = useSession();
