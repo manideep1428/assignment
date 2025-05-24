@@ -12,10 +12,11 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { signOut, useSession } from "next-auth/react"
-import { Github, Settings, User, LogOut, LayoutDashboard, Bell, Sun, Moon, Hand } from "lucide-react"
+import { Github, Settings, User, LogOut, LayoutDashboard, Bell, Sun, Moon, Hand, Box, BoxIcon } from "lucide-react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { ModeToggle } from "./DarkToggle"
+import { useRouter } from "next/navigation"
 
 const containerVariants = {
   hidden: { y: -100, opacity: 0 },
@@ -58,6 +59,7 @@ const logoVariants = {
 export default function Topbar() {
   const { data: session } = useSession()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const router =  useRouter();
 
   const handleClick = () => {
     alert("Under Construction")
@@ -88,11 +90,9 @@ export default function Topbar() {
           </motion.h1>
         </motion.div>
 
-        {/* Navigation Section */}
         <motion.nav variants={itemVariants} className="flex items-center space-x-2">
-          {/* Dashboard Button */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
-            <Button variant="ghost" size="sm" className="relative overflow-hidden group">
+            <Button onClick={()=>router.push("/orders")} variant="ghost" size="sm" className="relative overflow-hidden group">
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100"
                 initial={false}
@@ -100,8 +100,8 @@ export default function Topbar() {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <LayoutDashboard className="mr-2 h-4 w-4" />
-              <span className="relative z-10">Dashboard</span>
+              <BoxIcon className="mr-2 h-4 w-4" />
+              <span className="relative z-10">Orders</span>
             </Button>
           </motion.div>
 
