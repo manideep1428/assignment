@@ -17,6 +17,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { ModeToggle } from "./DarkToggle"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const containerVariants = {
   hidden: { y: -100, opacity: 0 },
@@ -74,19 +75,15 @@ export default function Topbar() {
     >
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-6">
         <motion.div variants={logoVariants} className="flex items-center space-x-3">
-          <motion.div
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-purple-600"
-          >
-            <span className="text-sm font-bold text-white">M</span>
-          </motion.div>
+            <span className="text-sm font-bold text-white">
+              <Image src={"/logo.ico"} width={30} height={30} alt="M"/>
+            </span>
           <motion.h1
             className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            MyApp
+            Assign
           </motion.h1>
         </motion.div>
 
@@ -105,9 +102,8 @@ export default function Topbar() {
             </Button>
           </motion.div>
 
-          {/* Notifications */}
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ duration: 0.2 }}>
-            <Button variant="ghost" size="sm" className="relative">
+            <Button onClick={handleClick} variant="ghost" size="sm" className="relative">
               <Bell className="h-4 w-4" />
               <motion.span
                 className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"
@@ -168,7 +164,7 @@ export default function Topbar() {
                         whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                         transition={{ duration: 0.2 }}
                       >
-                        <DropdownMenuItem className="cursor-pointer" onClick={()=>handleClick()}>
+                        <DropdownMenuItem className="cursor-pointer" onClick={handleClick}>
                           <User className="mr-2 h-4 w-4" />
                           <span>Profile</span>
                         </DropdownMenuItem>
@@ -178,7 +174,7 @@ export default function Topbar() {
                         whileHover={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
                         transition={{ duration: 0.2 }}
                       >
-                        <DropdownMenuItem className="cursor-pointer" onClick={()=>handleClick}>
+                        <DropdownMenuItem className="cursor-pointer" onClick={handleClick}>
                           <Settings className="mr-2 h-4 w-4" />
                           <span>Settings</span>
                         </DropdownMenuItem>
