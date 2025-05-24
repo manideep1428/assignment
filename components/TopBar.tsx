@@ -12,9 +12,9 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
 import { signOut, useSession } from "next-auth/react"
-import { Github, Settings, User, LogOut, LayoutDashboard, Bell, Sun, Moon, Hand, Box, BoxIcon } from "lucide-react"
+import { Github, Settings, User, LogOut, Bell, Box, BoxIcon } from "lucide-react"
 import Link from "next/link"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { ModeToggle } from "./DarkToggle"
 import { useRouter } from "next/navigation"
 
